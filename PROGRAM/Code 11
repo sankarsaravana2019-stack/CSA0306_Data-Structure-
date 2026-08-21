@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+#define SIZE 5
+
+int stack[SIZE];
+int top = -1;
+
+void push() {
+    int value;
+
+    if (top == SIZE - 1) {
+        printf("Stack Overflow\n");
+        return;
+    }
+
+    printf("Enter value: ");
+    scanf("%d", &value);
+
+    stack[++top] = value;
+    printf("Element pushed\n");
+}
+
+void pop() {
+    if (top == -1)
+        printf("Stack Underflow\n");
+    else
+        printf("Popped element = %d\n", stack[top--]);
+}
+
+void peek() {
+    if (top == -1)
+        printf("Stack is empty\n");
+    else
+        printf("Top element = %d\n", stack[top]);
+}
+
+int main() {
+    int choice;
+
+    while (1) {
+        printf("\n1. PUSH\n2. POP\n3. PEEK\n4. Exit");
+        printf("\nEnter choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 1)
+            push();
+        else if (choice == 2)
+            pop();
+        else if (choice == 3)
+            peek();
+        else
+            break;
+    }
+
+    return 0;
+}
